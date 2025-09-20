@@ -1,0 +1,71 @@
+openapi: 3.0.3
+info:
+  title: Manus Engine API
+  version: 0.1.0
+servers:
+  - url: http://localhost:7071
+paths:
+  /health:
+    get:
+      summary: Health check
+      responses:
+        '200':
+          description: OK
+  /api/v1/council:
+    post:
+      summary: Create council session
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                context:
+                  type: object
+                agents:
+                  type: array
+                  items:
+                    type: string
+      responses:
+        '200':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  council_id:
+                    type: string
+                  status:
+                    type: string
+  /api/v1/council/{id}:
+    get:
+      summary: Get council status
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Status
+  /api/v1/council/{id}/synthesis:
+    get:
+      summary: Get council synthesis
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Synthesis
+  /mcp/agents:
+    get:
+      summary: List registered agents
+      responses:
+        '200':
+          description: OK
+

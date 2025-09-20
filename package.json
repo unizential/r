@@ -1,0 +1,46 @@
+{
+  "name": "manus-engine",
+  "version": "0.1.0",
+  "description": "Council-Driven Roblox AI Studio",
+  "private": true,
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "dev": "pnpm -r run dev",
+    "test": "pnpm -w turbo run test",
+    "test:orchestrator": "pnpm --filter @manus/orchestrator test",
+    "dev:evidence": "pnpm --filter @manus/evidence dev",
+    "build": "pnpm -w turbo run build",
+    "clean": "pnpm -w turbo run clean",
+    "bootstrap": "./scripts/bootstrap.sh",
+    "scaffold": "./scripts/scaffold.mjs",
+    "rojo-sync": "./scripts/rojo-sync.mjs",
+    "council-run": "./scripts/council-run.mjs",
+    "dev-setup": "./scripts/dev-setup.mjs",
+    "lint": "pnpm -w turbo run lint",
+    "type-check": "pnpm -w turbo run type-check",
+    "local:run": "node scripts/local-runner.mjs",
+    "prepare": "husky"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "./.husky/pre-commit"
+    }
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.2.0",
+    "husky": "^9.0.0",
+    "prettier": "^3.1.0",
+    "turbo": "^2.5.6",
+    "ultracite": "5.2.3",
+    "rbxcloud": "^1.0.0",
+    "zx": "^8.1.0"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "pnpm": ">=8.0.0"
+  },
+  "packageManager": "pnpm@10.14.0"
+}

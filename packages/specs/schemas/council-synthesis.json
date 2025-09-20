@@ -1,0 +1,88 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Council Synthesis",
+  "description": "Schema for final council synthesis and recommendations",
+  "type": "object",
+  "required": ["mode", "recommendation", "agent_contributions", "metadata"],
+  "properties": {
+    "mode": {
+      "type": "string",
+      "enum": ["consensus", "majority", "expert_override"],
+      "description": "How the synthesis was determined"
+    },
+    "recommendation": {
+      "type": "object",
+      "required": ["summary", "confidence"],
+      "properties": {
+        "summary": {
+          "type": "string",
+          "maxLength": 300,
+          "description": "Executive summary of the recommendation"
+        },
+        "confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "Overall confidence in the recommendation (0-1)"
+        },
+        "artifacts": {
+          "type": "object",
+          "properties": {
+            "patch": {
+              "type": "object",
+              "properties": {
+                "files_impacted": {
+                  "type": "array",
+                  "items": { "type": "string" }
+                }
+              }
+            },
+            "tests": {
+              "type": "object",
+              "properties": {
+                "unit": {
+                  "type": "array",
+                  "items": { "type": "string" }
+                }
+              }
+            },
+            "weaver_workflow": {
+              "type": "object",
+              "properties": {
+                "name": { "type": "string" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "agent_contributions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["agent_id", "role", "contribution_type", "impact_score"],
+        "properties": {
+          "agent_id": { "type": "string" },
+          "role": { "type": "string" },
+          "contribution_type": { "type": "string" },
+          "impact_score": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          }
+        }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "required": ["council_id", "created_at", "duration_seconds", "rounds_completed", "total_messages"],
+      "properties": {
+        "council_id": { "type": "string" },
+        "created_at": { "type": "number" },
+        "duration_seconds": { "type": "number" },
+        "rounds_completed": { "type": "integer" },
+        "total_messages": { "type": "integer" }
+      }
+    }
+  }
+}

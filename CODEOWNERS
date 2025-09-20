@@ -1,0 +1,37 @@
+# Global owners
+* @m4n3
+
+# Core packages
+/packages/orchestrator/ @m4n3
+/packages/agents/ @m4n3
+/packages/specs/ @m4n3
+
+# Apps
+/apps/studio/ @m4n3
+
+# Infrastructure
+/.github/ @m4n3
+/scripts/ @m4n3
+/Makefile @m4n3
+/turbo.json @m4n3
+/pnpm-workspace.yaml @m4n3
+
+# Documentation
+/docs/ @m4n3
+/README.md @m4n3
+/CONTRIBUTING.md @m4n3
+
+# Configuration
+/.cursorrules @m4n3
+/.editorconfig @m4n3
+/.gitignore @m4n3
+/.gitleaks.toml @m4n3
+/biome.jsonc @m4n3
+/tsconfig.json @m4n3
+
+# API and contracts
+/openapi/ @m4n3
+/packages/specs/schemas/ @m4n3
+
+# Samples
+/samples/ @m4n3

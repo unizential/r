@@ -1,0 +1,52 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Agent Critique",
+  "description": "Schema for agent critiques in Council sessions",
+  "type": "object",
+  "required": ["agent_id", "council_id", "round", "content"],
+  "properties": {
+    "agent_id": {
+      "type": "string",
+      "description": "Unique identifier for the agent"
+    },
+    "council_id": {
+      "type": "string",
+      "description": "Council session identifier"
+    },
+    "round": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Council round number"
+    },
+    "content": {
+      "type": "object",
+      "required": ["type", "target_agent", "feedback"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["critique"],
+          "description": "Message type"
+        },
+        "target_agent": {
+          "type": "string",
+          "description": "Agent being critiqued"
+        },
+        "feedback": {
+          "type": "string",
+          "description": "Constructive feedback on the target agent's proposal"
+        },
+        "rating": {
+          "type": "number",
+          "minimum": 1,
+          "maximum": 5,
+          "description": "Rating of the target proposal (1-5)"
+        },
+        "suggestions": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "List of improvement suggestions"
+        }
+      }
+    }
+  }
+}

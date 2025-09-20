@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://manus.dev/schemas/orchestrator-state.json",
+  "title": "OrchestratorState",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "format": "uuid" },
+    "state": { "type": "string", "enum": ["collecting_proposals", "proposal_received", "synthesized", "error"] },
+    "createdAt": { "type": "number" }
+  },
+  "required": ["id", "state", "createdAt"]
+}
+
+
